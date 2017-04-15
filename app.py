@@ -29,7 +29,7 @@ class LoginScreen(QMainWindow):
 
         self.show()
     def keyPressEvent(self, e):
-        print(e)
+        print(e.text())
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
