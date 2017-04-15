@@ -1,4 +1,6 @@
-you need to install pyqt5 on python3
+you need to install pyqt5 and discord.py on python3
 
 pip3 install pyqt5
 python3 -m pip install pyqt5
+
+https://github.com/Rapptz/discord.py
