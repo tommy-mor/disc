@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QAction, qApp
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QIcon
 
@@ -12,24 +12,31 @@ class LoginScreen(QMainWindow):
         act.setStatusTip('exit the app')
         act.triggered.connect(qApp.quit)
 
-        menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&File')
-        fileMenu.addAction(act)
+        win = QWidget()
 
-        self.toolbar = self.addToolBar('exit')
-        self.toolbar.addAction(act)
+        usrIn = QLineEdit()
 
+        pswdIn = QLineEdit()
+        pswdIn.setEchoMode(QLineEdit.Password)
+
+        btn = QPushButton('Login', self)
+        btn.resize(btn.sizeHint())
+        btn.clicked.connect(lambda:print(usrIn.text()))
+
+        flo = QFormLayout()
+        flo.addRow("Username", usrIn)
+        flo.addRow("Password", pswdIn)
+        flo.addRow(btn)
+        
+        win.setLayout(flo)
+        self.setCentralWidget(win)
         self.setGeometry(300, 300, 250, 150)
         self.setWindowTitle('disc')
         self.statusBar().showMessage('Ready')
 
-        #btn = QPushButton('click me pls', self)
-        #btn.resize(btn.sizeHint())
-        #btn.move(20, 100)
+        print(self.centralWidget())
 
         self.show()
-    def keyPressEvent(self, e):
-        print(e.text())
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
